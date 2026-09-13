@@ -17,6 +17,10 @@ from branca.colormap import linear
 import branca.colormap as cmp
 import geopandas
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
 # -------------------------------------------------------------데이터 불러오기-------------------------------------------------------------
 chart_data = pd.read_csv('https://raw.githubusercontent.com/huhshin/streamlit/master/data_sales.csv')
 medal = pd.read_csv('https://raw.githubusercontent.com/huhshin/streamlit/master/data_medal.csv')
@@ -41,11 +45,11 @@ seocho_gu_json = {
 # -------------------------------------------------------------지도 불러오기 함수-------------------------------------------------------------
 def show_map(lat, lon, zoom, data):
 
-    df = pd.read_csv("data/seoul_population.csv")
+    df = pd.read_csv(BASE_DIR / "data" / "seoul_population.csv")
 
 
     #cctv 데이터 가져오기 !!경로 확인 필수!!
-    gdf = geopandas.read_file("data/cctv.geojson")
+    gdf = geopandas.read_file(BASE_DIR / "data" / "cctv.geojson")
 
 
     #지도 포화도에 따른 색 표현
@@ -389,7 +393,7 @@ def page3():
 
 # -------------------------------------------------------------사이드바 설정(사진)-------------------------------------------------------------
 with st.sidebar:
-    seoul_logo = {"image_url" : "data/seoul_img.png"}
+    seoul_logo = {"image_url": BASE_DIR / "data" / "seoul_img.png"}
 
     #서울특별시
     #SEOUL MY SOUL https://www.seoul.go.kr/res_newseoul/images/seoul/seoulmysoul.png
