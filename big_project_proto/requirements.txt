@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+branca
+geopy
+streamlit-option-menu
+plotly
+folium
+streamlit-folium
+requests
+geopandas
+joblib
